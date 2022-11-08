@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link, Head } from '@inertiajs/inertia-react';
+import { useLaravelReactI18n } from 'laravel-react-i18n';
 
 export default function Welcome(props) {
+    const { t } = useLaravelReactI18n();
+
     return (
         <>
             <Head title="Welcome" />
@@ -14,7 +17,7 @@ export default function Welcome(props) {
                     ) : (
                         <>
                             <Link href={route('login')} className="text-sm text-gray-700 dark:text-gray-500 underline">
-                                Log in
+                                {t('User.Log in')}
                             </Link>
 
                             <Link

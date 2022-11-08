@@ -6,8 +6,10 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
+import { useLaravelReactI18n } from 'laravel-react-i18n';
 
 export default function Login({ status, canResetPassword }) {
+    const { t, setLang } = useLaravelReactI18n()
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
@@ -38,7 +40,7 @@ export default function Login({ status, canResetPassword }) {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel forInput="email" value="Email" />
+                    <InputLabel forInput="email" value={t('User.Email')} />
 
                     <TextInput
                         type="text"
@@ -89,6 +91,7 @@ export default function Login({ status, canResetPassword }) {
                     <PrimaryButton className="ml-4" processing={processing}>
                         Log in
                     </PrimaryButton>
+                    <button className="ml-4" onClick={() => setLang('fr')}>To fr</button>
                 </div>
             </form>
         </GuestLayout>
